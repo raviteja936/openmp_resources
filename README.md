@@ -12,19 +12,19 @@ OpenMP is an API for programming multi-threaded parallelism in shared address sp
 2. Run-time Library Routines
 3. Environment Variables
 
-In the following sections, I start with a few key concepts about the API and then deep dive into some constructs along with some examples. I also plan to publish some benchmarks using this API on my [Intel Xeon](https://ark.intel.com/content/www/us/en/ark/products/91767/intel-xeon-processor-e5-2650-v4-30m-cache-2-20-ghz.html) rig.
+In the following sections, I start with a few key concepts about the API and then deep dive into some constructs along with some examples. I also plan to publish some benchmarks using this API on my 12-core [Intel Xeon](https://ark.intel.com/content/www/us/en/ark/products/91767/intel-xeon-processor-e5-2650-v4-30m-cache-2-20-ghz.html) rig.
 
 #
 ## Some Key Concepts
 
 
 ### Fork-Join Model:
-OpenMP supports multi-threading for shared memory architectures, which means we need a model for multi-threading. OpenMP defines a fork-join model, where the process starts out as a master thread. When a compiler directive is given for parallel processing, master is split into threads (collectively called a team). When the paraller region is complete, all thread in the team join back into the master for serial processing.
+OpenMP supports multi-threading for shared memory architectures, which means we need a model for multi-threading. OpenMP defines a fork-join model, where the process starts sequentially on a master thread. When a compiler directive is given for parallel processing, master thread is split into multiple parallel threads (collectively called a team). When the parallel region is complete, threads in the team join back into the master for serial processing. One way to think about it is - If there are 10 threads in the parallel region, mentally copy paste the code 10 times, each snippet going into one of the threads.
 
 ![](./images/fork_join2.gif)
 
 ### Compiling:
-Code with OpenMP must be compiled with some special instructions for the compiler to bind the respective directives. For GCC, you can use: 
+Code with OpenMP must be compiled with some special instructions for the compiler to resolve and bind the directives. For GCC, you can use: 
 `gcc -fopenmp hello_world.c -o hello_world` 
 
 ## Compiler Directives
