@@ -12,7 +12,7 @@ OpenMP is an API for programming multi-threaded parallelism in shared address sp
 2. Run-time Library Routines
 3. Environment Variables
 
-In the following sections, we start with a few key concepts of the API and then deep dive into the constructs of the API along with some examples. I also plan to publish some benchmarks using this API on my Intel Xeon rig.
+In the following sections, I start with a few key concepts about the API and then deep dive into some constructs along with some examples. I also plan to publish some benchmarks using this API on my [Intel Xeon](https://ark.intel.com/content/www/us/en/ark/products/91767/intel-xeon-processor-e5-2650-v4-30m-cache-2-20-ghz.html) rig.
 
 #
 ## Some Key Concepts
